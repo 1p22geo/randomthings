@@ -5,7 +5,7 @@ np.random.seed(19680801)
 
 SAMPLE_SIZE = 10
 
-fig, ax = plt.subplots(2,2)
+fig, ax = plt.subplots(2)
 dots = np.linspace(0, 1, SAMPLE_SIZE)
 X, Y = np.meshgrid(dots, dots)
 x, y = X.ravel(), Y.ravel()
@@ -20,7 +20,6 @@ a = Comp(2,3)
 b = Comp(4,-2)
 
 for n in range(SAMPLE_SIZE**2):
-    print(n)
     f = Comp(x[n], y[n])
 
     """ q = f.mul(b)
@@ -30,12 +29,11 @@ for n in range(SAMPLE_SIZE**2):
     y[n] = f.b
     
 
-a1 = Comp(2,3)
-b1 = Comp(4,-2)
+a1 = Comp(int(input("give value  ")),int(input("give value  ")))
+b1 = Comp(int(input("give value  ")),int(input("give value  ")))
 
 for n in range(SAMPLE_SIZE**2):
-    print(n)
-    f = Comp(x1[n], y1[n])
+    f = Comp(float(x1[n]), float(y1[n]))
 
     q = f.mul(b1)
     r = q.add(a1)
@@ -44,7 +42,7 @@ for n in range(SAMPLE_SIZE**2):
     y1[n] = q.b
 
 
-a2 = Comp(4,-3)
+""" a2 = Comp(4,-3)
 b2 = Comp(5,-1)
 
 for n in range(SAMPLE_SIZE**2):
@@ -62,19 +60,16 @@ a3 = Comp(0,0)
 b3 = Comp(1,1)
 
 for n in range(SAMPLE_SIZE**2):
-    print(n)
     f = Comp(x3[n], y3[n])
 
     q = f.mul(b3)
     r = q.add(a3)
 
     x3[n] = q.a
-    y3[n] = q.b
+    y3[n] = q.b """
     
 """ print(y)
 print(x) """
-ax[0][0].scatter(x, y)
-ax[1][0].scatter(x1, y1)
-ax[0][1].scatter(x2, y2)
-ax[1][1].scatter(x3, y3)
+ax[0].scatter(x, y)
+ax[1].scatter(x1, y1)
 plt.show()
