@@ -21,5 +21,6 @@ class Complex:
 if __name__ =="__main__":
     x = Complex(2,3)
     y = Complex(3,8)
-    print(x.mul(y))
+    a = x.mul(y)
+    print(a.add(Complex(1,1)))
     print(Complex(-1.34, -1.34))
