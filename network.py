@@ -17,7 +17,7 @@ class Network:
         self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        #self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
+        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
         #self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()])])
@@ -56,7 +56,7 @@ SAMPLE_SIZE = 500
 
 fig, ax = plt.subplots(2, 2)
 best = Network()
-for p in range(200):
+for p in range(400):
     nets = [best]
 
 
@@ -65,10 +65,10 @@ for p in range(200):
         a.randomize()
         nets.append(a)
 
-    dots = sample(list(np.linspace(-10, 10, 1000)), SAMPLE_SIZE)
-    dots = np.array(dots)
-    result_a = np.sin(dots)
-    result_b = np.cos(dots)
+    dots = np.linspace(-10, 10, 1000)
+    #dots = np.array(dots)
+    result_a = dots**3+2*dots**2-10*dots
+    result_b = 2*dots**3+3*dots**2-10*dots
 
     diffs = []
 
@@ -82,19 +82,15 @@ for p in range(200):
             diff += abs(evaled[1][n]-result_b[n])
         diffs.append(diff)
         print(diff)
+    print("----------------------\n\n")
 
-    min = 10000
-    index = -1
-    for n in range(len(diffs)):
-        if diffs[n] < min:
-            min = diffs[n]
-            index = n
+    index = np.argmin(diffs)
 
     best = nets[index]
 
 dots = np.linspace(-10, 10, SAMPLE_SIZE)
-result_a = np.sin(dots)
-result_b = np.cos(dots)
+result_a = dots**3+2*dots**2-10*dots
+result_b = 2*dots**3+3*dots**2-10*dots
 
 evaled = best.evaluate([dots])
 
