@@ -25,6 +25,12 @@ class Complex:
         else:
             return "{} - {}i".format(self.a,-self.b)
 
+
+class TrigComplex(Complex):
+    def __init__(self, abs, arg):
+        self.abs = abs
+        self.arg = arg
+
 if __name__ =="__main__":
     x = Complex(2,3)
     y = Complex(3,8)
