@@ -5,11 +5,13 @@ from random import randint, choice
 
 class Network:
     def __init__(self):
-        self.layers = [[], [], [], []]
+        self.layers = [[], [], [], [], [], []]
         self.layers[0] = [Node()]
-        self.layers[1] = [Node([0.5]), Node([0.1], 10)]
-        self.layers[2] = [Node([-0.2, 0.5]), Node([0.3, 8])]
-        self.layers[3] = [Node([0.5, 0.12]), Node([0.5, 0.5])]
+        self.layers[1] = [Node([0.2]), Node([0.01], -0.1), Node([0.03], -0.93), Node([0.03], -0.93)]
+        self.layers[2] = [Node([-0.02, 0.05, 0.03, 0.03]), Node([0.03, 0.8, 0.03, 0.03], -0.93), Node([0.03, 0.8, 0.03, 0.03], -0.93), Node([0.03, 0.8, 0.03, 0.03], -0.93)]
+        self.layers[3] = [Node([0.95, 0.12, 0.03, 0.03],-0.4), Node([0.01, 0.05, 0.03, 0.03]), Node([0.01, 0.05, 0.03, 0.03])]
+        self.layers[4] = [Node([0.95, 0.12, 0.03],-0.4), Node([0.01, 0.05, 0.03]), Node([0.01, 0.05, 0.03]), Node([0.01, 0.05, 0.03])]#TODO: Make those numbers random
+        self.layers[5] = [Node([0.95, 0.12, 0.03, 0.03],-0.4), Node([0.01, 0.05, 0.03, 0.03])]
 
     def copy(self):
         a = Network()
@@ -24,9 +26,13 @@ class Network:
             node.evaluate(self.layers[1])
         for node in self.layers[3]:
             node.evaluate(self.layers[2])
+        for node in self.layers[4]:
+            node.evaluate(self.layers[3])
+        for node in self.layers[5]:
+            node.evaluate(self.layers[4])
 
         x = []
-        for node in self.layers[3]:
+        for node in self.layers[5]:
             x.append(node.x)
         
         return x
@@ -34,17 +40,19 @@ class Network:
     def randomize(self):
         layer = choice(self.layers)
         node = choice(layer)
-        e = randint(-1, len(node.weighths))
+        e = randint(-1, len(node.w)-1)
         if e == -1:
-            node.b += choice([0,0.1, -0.1, 0.05, -0.05])
+            node.b += choice([0,-0.2, 0.2, -0.05, 0.05])
         else:
-            node.weighths[e] += choice([0, 0.1, -0.1, 0.05, -0.05])
+            print(e)
+            node.w[e] += choice([0, 0.1, -0.1, 0.3, -0.3])
 
 
 
 net = Network()
 
-print(net.evaluate([1]))
+for n in range(10000):
+    net.randomize()
 
 np.random.seed(19680801)
 
@@ -59,9 +67,6 @@ for pair in evaled:
     a.append(pair[0])
     b.append(pair[0])
 
-print("dots", dots)
-print("eval", evaled)
-print("a", a)
 ax[0].plot(dots, evaled[0])
 ax[1].plot(dots, evaled[1])
 
