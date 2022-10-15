@@ -3,10 +3,10 @@ import numpy as np
 from things import Complex as Comp
 np.random.seed(19680801)
 
-SAMPLE_SIZE = 10
+SAMPLE_SIZE = 9
 
 fig, ax = plt.subplots(2)
-dots = np.linspace(0, 1, SAMPLE_SIZE)
+dots = np.linspace(-1, 1, SAMPLE_SIZE)
 X, Y = np.meshgrid(dots, dots)
 x, y = X.ravel(), Y.ravel()
 x1 = x.copy()
@@ -29,9 +29,10 @@ for n in range(SAMPLE_SIZE**2):
     y[n] = f.b
     
 
-a1 = Comp(int(input("give value  ")),int(input("give value  ")))
-b1 = Comp(int(input("give value  ")),int(input("give value  ")))
-c1 = Comp(int(input("give value  ")),int(input("give value  ")))
+a1 = Comp(int(input("Real part of a  ")),int(input("Imaginary part of a  ")))
+b1 = Comp(int(input("Real part of b  ")),int(input("Imaginary part of b  ")))
+c1 = Comp(int(input("Real part of c  ")),int(input("Imaginary part of c  ")))
+d1 = Comp(int(input("Real part of d  ")),int(input("Imaginary part of d  ")))
 
 for n in range(SAMPLE_SIZE**2):
     f = Comp(float(x1[n]), float(y1[n]))
@@ -41,7 +42,8 @@ for n in range(SAMPLE_SIZE**2):
     q = f.mul(b1)
     r = a1
     p = f.power(2).mul(c1)
-    out = q.add(r).add(p)
+    p1 = f.power(3).mul(d1)
+    out = q.add(r).add(p).add(p1)
 
     print(out)
     x1[n] = out.a
@@ -76,6 +78,6 @@ for n in range(SAMPLE_SIZE**2):
     
 """ print(y)
 print(x) """
-ax[0].scatter(x, y)
-ax[1].scatter(x1, y1)
+ax[0].triplot(x, y)
+ax[1].triplot(x1, y1)
 plt.show()
