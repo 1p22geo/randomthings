@@ -12,7 +12,6 @@ class Node:
         sum = 0
         for n in range(len(nodes)):
             sum += nodes[n].x * self.w[n]
-        print(sum)
         sum -= self.b
         self.x = np.tanh(sum) 
 

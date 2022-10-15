@@ -1,21 +1,23 @@
 from node import Node
 import matplotlib.pyplot as plt
 import numpy as np
-from random import randint, choice
+import copy
+from random import randint, choice, random, sample
 
 class Network:
     def __init__(self):
         self.layers = [[], [], [], [], [], []]
         self.layers[0] = [Node()]
-        self.layers[1] = [Node([0.2]), Node([0.01], -0.1), Node([0.03], -0.93), Node([0.03], -0.93)]
-        self.layers[2] = [Node([-0.02, 0.05, 0.03, 0.03]), Node([0.03, 0.8, 0.03, 0.03], -0.93), Node([0.03, 0.8, 0.03, 0.03], -0.93), Node([0.03, 0.8, 0.03, 0.03], -0.93)]
-        self.layers[3] = [Node([0.95, 0.12, 0.03, 0.03],-0.4), Node([0.01, 0.05, 0.03, 0.03]), Node([0.01, 0.05, 0.03, 0.03])]
-        self.layers[4] = [Node([0.95, 0.12, 0.03],-0.4), Node([0.01, 0.05, 0.03]), Node([0.01, 0.05, 0.03]), Node([0.01, 0.05, 0.03])]#TODO: Make those numbers random
-        self.layers[5] = [Node([0.95, 0.12, 0.03, 0.03],-0.4), Node([0.01, 0.05, 0.03, 0.03])]
+        self.layers[1] = [Node([random()]), Node([random()]), Node([random()]), Node([random()])]
+        self.layers[2] = [Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])]
+        self.layers[3] = [Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])]
+        self.layers[4] = [Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()])]#TODO: Make those numbers random
+        self.layers[5] = [Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])]
 
     def copy(self):
-        a = Network()
-        a.layers = self.layers
+
+        return copy.deepcopy(self)
+
 
     def evaluate(self, values):
         for n in range(len(values)):
@@ -44,30 +46,36 @@ class Network:
         if e == -1:
             node.b += choice([0,-0.2, 0.2, -0.05, 0.05])
         else:
-            print(e)
             node.w[e] += choice([0, 0.1, -0.1, 0.3, -0.3])
 
 
 
-net = Network()
+nets = [Network()]
+best = nets[0]
 
-for n in range(10000):
-    net.randomize()
 
 np.random.seed(19680801)
 
 SAMPLE_SIZE = 50
 
-fig, ax = plt.subplots(2)
+fig, ax = plt.subplots(2, 2)
 dots = np.linspace(-10, 10, SAMPLE_SIZE)
+result_a = np.sin(dots)
+result_b = np.cos(dots)
 
-evaled = net.evaluate([dots])
-a, b = [], []
-for pair in evaled:
-    a.append(pair[0])
-    b.append(pair[0])
+evaled = nets[0].evaluate([dots])
+diff = 0
 
-ax[0].plot(dots, evaled[0])
-ax[1].plot(dots, evaled[1])
+for n in range(SAMPLE_SIZE):
+    diff += abs(evaled[0][n]-result_a[n])
+    diff += abs(evaled[1][n]-result_b[n])
+
+print(diff)
+
+ax[0][0].plot(dots, evaled[0])
+ax[1][0].plot(dots, evaled[1])
+ax[0][1].plot(dots, result_a)
+ax[1][1].plot(dots, result_b)
+
 
 plt.show()
