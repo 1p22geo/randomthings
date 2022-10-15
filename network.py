@@ -11,14 +11,19 @@ class Network:
         self.layers.append([Node([random()]), Node([random()]), Node([random()]), Node([random()])])
         self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]),Node([random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        #self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        #self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
+        """ self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
+        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
+        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
+        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
+        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
+        """
         self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
+        """ self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        #self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        #self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
+        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
+         """
         self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
         self.layers.append([Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()])])
         self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
@@ -46,31 +51,34 @@ class Network:
         node = choice(layer)
         e = randint(-1, len(node.w)-1)
         if e == -1:
-            node.b += choice([0,-0.2, 0.2, -0.05, 0.05, 1, -1])
+            node.b += choice([0,-0.2, 0.2, -0.5, 0.5, 1, -1])
         else:
-            node.w[e] += choice([0, 0.1, -0.1, 0.3, -0.3, 0.7, -0.7])
+            node.w[e] += choice([0, 0.1, -0.1, 0.3, -0.3, 0.5, -0.5, 1, -1])
 
 np.random.seed(19680801)
 
-SAMPLE_SIZE = 500
+SAMPLE_SIZE = 1000
 
 fig, ax = plt.subplots(2, 2)
 best = Network()
-for p in range(200):
-    nets = [best]
+nets = [best]
+for p in range(100):
+    
 
+    bnets = copy.deepcopy(nets)
+    for g in bnets:
+        for m in range(50):
+            a =best.copy()
+            a.randomize()
+            nets.append(a)
 
-    for m in range(200):
-        a =best.copy()
-        a.randomize()
-        nets.append(a)
+    #dots = sample(list(np.linspace(-50, 50, 1000)), SAMPLE_SIZE)
+    #dots = np.array(dots)
+    dots = np.linspace(-10, 10, SAMPLE_SIZE)
+    result_a = 10000*dots**2
+    result_b = 20000*dots+3
 
-    dots = sample(list(np.linspace(-10, 10, 1000)), SAMPLE_SIZE)
-    dots = np.array(dots)
-    result_a = np.sin(dots)
-    result_b = np.cos(dots)
-
-    diffs = []
+    diffs = {}
 
     for net in nets:
 
@@ -80,21 +88,28 @@ for p in range(200):
         for n in range(SAMPLE_SIZE):
             diff += abs(evaled[0][n]-result_a[n])
             diff += abs(evaled[1][n]-result_b[n])
-        diffs.append(diff)
+        diffs[diff] = net
         print(diff)
 
     min = 10000
     index = -1
-    for n in range(len(diffs)):
+
+    v = list(diffs.keys())
+    v.sort()
+    nets = []
+    for o in range(5):
+        nets.append(diffs[v[o]])
+
+    """ for n in range(len(diffs)):
         if diffs[n] < min:
             min = diffs[n]
-            index = n
+            index = n """
 
-    best = nets[index]
+    #best = nets[index]
 
 dots = np.linspace(-10, 10, SAMPLE_SIZE)
-result_a = np.sin(dots)
-result_b = np.cos(dots)
+result_a = 1000*dots**2
+result_b = 2000*dots+3
 
 evaled = best.evaluate([dots])
 
