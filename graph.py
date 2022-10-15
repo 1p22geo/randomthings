@@ -34,10 +34,15 @@ b1 = Comp(int(input("Real part of b  ")),int(input("Imaginary part of b  ")))
 c1 = Comp(int(input("Real part of c  ")),int(input("Imaginary part of c  ")))
 d1 = Comp(int(input("Real part of d  ")),int(input("Imaginary part of d  ")))
 
+""" a1 = Comp(0,0)
+b1 = Comp(1,0)
+c1 = Comp(0,0)
+d1 = Comp(0,0) """
+
 for n in range(SAMPLE_SIZE**2):
     f = Comp(float(x1[n]), float(y1[n]))
-    print(f)
-    print(f.power(2))
+    """ print(f)
+    print(f.power(2)) """
 
     q = f.mul(b1)
     r = a1
@@ -45,7 +50,7 @@ for n in range(SAMPLE_SIZE**2):
     p1 = f.power(3).mul(d1)
     out = q.add(r).add(p).add(p1)
 
-    print(out)
+    """ print(out) """
     x1[n] = out.a
     y1[n] = out.b
 
@@ -78,8 +83,27 @@ for n in range(SAMPLE_SIZE**2):
     
 """ print(y)
 print(x) """
-ax[0][0].scatter(x, y)
-ax[1][0].scatter(x1, y1)
+v = int(input("Which vertice to paint? "))
+elems_to_yellow = [37, 38, 39, 41, 42, 43, 36, 44]
+elems_to_purple = [40, v]
+elems_to_blue = [49, 58, 67, 76, 31, 22, 13, 4]
+z = np.linspace(10, 10, SAMPLE_SIZE**2)
+print(len(z))
+for n in range(len(z)):
+    if n in elems_to_yellow:
+        z[n] = 20
+
+for n in range(len(z)):
+    if n in elems_to_purple:
+        z[n] = 50
+
+for n in range(len(z)):
+    if n in elems_to_blue:
+        z[n] = 30
+print(z)
+
+ax[0][0].scatter(x, y, s=z, c=z)
+ax[1][0].scatter(x1, y1, s=z, c=z)
 ax[0][1].triplot(x, y)
-ax[1][1].triplot(x1, y1)
+ax[1][1].triplot(x,y)
 plt.show()
