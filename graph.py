@@ -31,15 +31,21 @@ for n in range(SAMPLE_SIZE**2):
 
 a1 = Comp(int(input("give value  ")),int(input("give value  ")))
 b1 = Comp(int(input("give value  ")),int(input("give value  ")))
+c1 = Comp(int(input("give value  ")),int(input("give value  ")))
 
 for n in range(SAMPLE_SIZE**2):
     f = Comp(float(x1[n]), float(y1[n]))
+    print(f)
+    print(f.power(2))
 
     q = f.mul(b1)
-    r = q.add(a1)
+    r = a1
+    p = f.power(2).mul(c1)
+    out = q.add(r).add(p)
 
-    x1[n] = q.a
-    y1[n] = q.b
+    print(out)
+    x1[n] = out.a
+    y1[n] = out.b
 
 
 """ a2 = Comp(4,-3)
