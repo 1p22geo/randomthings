@@ -2,26 +2,26 @@ from node import Node
 import matplotlib.pyplot as plt
 import numpy as np
 import copy
-from random import randint, choice, random, sample
+from random import randint, choice, random, sample, uniform
 
 class Network:
     def __init__(self):
         self.layers = [[]]
         self.layers[0] = [Node()]
-        self.layers.append([Node([random()]), Node([random()]), Node([random()]), Node([random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]),Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        #self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        #self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        #self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
+        self.layers.append([Node([uniform(-2,2)]), Node([uniform(-2,2)]), Node([uniform(-2,2)]), Node([uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]),Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]),Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]),Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]),Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]),Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
+        self.layers.append([Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)]), Node([uniform(-2,2), uniform(-2,2), uniform(-2,2), uniform(-2,2)])])
 
     def copy(self):
 
@@ -56,13 +56,13 @@ SAMPLE_SIZE = 500
 
 fig, ax = plt.subplots(2, 2)
 best = Network()
-for p in range(400000):
+for p in range(400):
     print("=========================")
     f = choice([1, -1])
     dots = np.linspace(-10, 10, 1000)
     #dots = np.array(dots)
-    result_a = np.exp(dots)
-    result_b = 2*dots**3+3*dots**2-10*dots
+    result_a = -np.exp(dots)
+    result_b = -(2*dots**3+3*dots**2-10*dots)
 
     evaled = best.evaluate([dots])
     diff = 0
