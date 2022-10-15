@@ -5,7 +5,7 @@ np.random.seed(19680801)
 
 SAMPLE_SIZE = 9
 
-fig, ax = plt.subplots(2)
+fig, ax = plt.subplots(2, 2)
 dots = np.linspace(-1, 1, SAMPLE_SIZE)
 X, Y = np.meshgrid(dots, dots)
 x, y = X.ravel(), Y.ravel()
@@ -78,6 +78,8 @@ for n in range(SAMPLE_SIZE**2):
     
 """ print(y)
 print(x) """
-ax[0].triplot(x, y)
-ax[1].triplot(x1, y1)
+ax[0][0].scatter(x, y)
+ax[1][0].scatter(x1, y1)
+ax[0][1].triplot(x, y)
+ax[1][1].triplot(x1, y1)
 plt.show()
