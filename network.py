@@ -11,11 +11,11 @@ class Network:
         self.layers[0] = [Node()]
         self.layers.append([Node([uniform(2, -2)]), Node([uniform(2, -2)]), Node([uniform(2, -2)]), Node([uniform(2, -2)])])
         self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
         
         self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
 
@@ -96,8 +96,8 @@ while True:
     best = nets[index] """
 
 dots = np.linspace(-10, 10, SAMPLE_SIZE)
-result_a = -np.exp(dots)
-#result_b = 2*dots**3+3*dots**2-10*dots
+#result_a = -np.exp(dots)
+result_a = 2*dots**3+3*dots**2-10*dots
 
 evaled = best.evaluate([dots])
 
