@@ -58,7 +58,7 @@ SAMPLE_SIZE = 500
 fig, ax = plt.subplots(2, 2)
 best = Network()
 changes = 0
-while changes < 0:
+while changes < 1:
     a = graient.GraientDescent(best, SAMPLE_SIZE)
     changes += a
 
