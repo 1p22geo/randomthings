@@ -55,7 +55,7 @@ while True:
     if a :
         changeList.append(count)
 
-    if count >= 10000:
+    if count >= 100000:
         break
 
     """ nets = [best]
