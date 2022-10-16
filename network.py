@@ -9,20 +9,20 @@ class Network:
     def __init__(self):
         self.layers = [[]]
         self.layers[0] = [Node()]
-        self.layers.append([Node([random()]), Node([random()]), Node([random()]), Node([random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]),Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]),Node([random(), random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()]), Node([random(), random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()]), Node([random(), random(), random()])])
-        self.layers.append([Node([random(), random(), random(), random()]), Node([random(), random(), random(), random()])])
+        self.layers.append([Node([1.0]), Node([1.0]), Node([1.0]), Node([1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0])])
+        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
 
     def copy(self):
 
@@ -57,8 +57,10 @@ SAMPLE_SIZE = 500
 
 fig, ax = plt.subplots(2, 2)
 best = Network()
-for p in range(40):
-    graient.GraientDescent(best, SAMPLE_SIZE)
+changes = 0
+while changes < 0:
+    a = graient.GraientDescent(best, SAMPLE_SIZE)
+    changes += a
 
     """ nets = [best]
 
