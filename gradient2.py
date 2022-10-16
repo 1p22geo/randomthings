@@ -6,19 +6,34 @@ def GraientDescent(best, SAMPLE_SIZE, f = choice([1, -1])):
     dots = np.linspace(-10, 10, 1000)
     #dots = np.array(dots)
     #result_a = -np.exp(dots)
-    result_a = -(2*dots**3+3*dots**2-10*dots)
+    result_a = -(3*dots**2-10*dots)
 
-    evaled = best.evaluate([dots])
+    #evaled = best.evaluate([dots])
     diff = 0
     
     #diff = np.sum((evaled[0]-result_a)**2)/SAMPLE_SIZE
 
     for n in range(SAMPLE_SIZE):
-        diff += abs(evaled[0][n]-result_a[n])**2
+        evaled = best.evaluate([dots[n]])
+        diff += abs(evaled[0]-result_a[n])**2
         #diff += abs(evaled[1][n]-result_b[n])**2
     #diff /= SAMPLE_SIZE
     print(diff)
-    layer = choice(best.layers)
+
+    evaled = best.layers[-1][0].x
+    for a in range(len(best.layers[1])):
+        for b in range(len(best.layers[0])):
+            slopeO = evaled*(1-evaled)
+            slopeH = best.layers[1][a].x*(1-best.layers[1][a].x)
+            dx3dw = best.layers[0][b].x*slopeH*best.layers[2][0].w[a]
+            best.layers[1][a].w[b]+=dx3dw*diff*(0.0005)
+
+    for a in range(len(best.layers[2])):
+        slopeO = evaled*(1-evaled)
+        dx3dw = best.layers[1][a].x *slopeO
+        best.layers[2][0].w[a]+=dx3dw*diff*(0.0005)
+    return 1
+    """ layer = choice(best.layers)
     if layer == best.layers[0]:
         return 0
     node = choice(layer)
@@ -82,4 +97,4 @@ def GraientDescent(best, SAMPLE_SIZE, f = choice([1, -1])):
             else:
                 node.w[e] += 0.005*f
             print(" -> ", new_diff)
-            return 1
+            return 1 """

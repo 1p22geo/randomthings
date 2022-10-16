@@ -37,7 +37,7 @@ for epochs in range(100000):
 print(weights)
 print(bias)
 
-pred = np.array([0,1])
+pred = np.array([1,0])
 result = np.dot(pred, weights) +bias
 res = sigmoid(result)
 print(res)

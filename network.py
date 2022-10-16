@@ -10,13 +10,7 @@ class Network:
         self.layers = [[]]
         self.layers[0] = [Node()]
         self.layers.append([Node([uniform(2, -2)]), Node([uniform(2, -2)]), Node([uniform(2, -2)]), Node([uniform(2, -2)])])
-        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
-        
+        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
         self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
 
     def copy(self):
@@ -50,7 +44,7 @@ np.random.seed(19680801)
 
 SAMPLE_SIZE = 500
 
-fig, ax = plt.subplots(2, 2)
+fig, ax = plt.subplots(2, 2, sharex=True, sharey=True)
 best = Network()
 changes = 0
 count = 0
@@ -61,7 +55,7 @@ while True:
     if a :
         changeList.append(count)
 
-    if count-changeList[-1] >= 10000:
+    if count >= 10000:
         break
 
     """ nets = [best]
@@ -97,7 +91,7 @@ while True:
 
 dots = np.linspace(-10, 10, SAMPLE_SIZE)
 #result_a = -np.exp(dots)
-result_a = 2*dots**3+3*dots**2-10*dots
+result_a = 3*dots**2-10*dots
 
 evaled = best.evaluate([dots])
 
