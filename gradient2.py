@@ -24,9 +24,9 @@ def GraientDescent(best, SAMPLE_SIZE, f = choice([1, -1])):
     node = choice(layer)
     e = randint(-1,len(node.w)-1)
     if e == -1:
-        node.b += 0.05*f
+        node.b += 0.005*f
     else:
-        node.w[e] += 0.05*f
+        node.w[e] += 0.005*f
     
     new_evaled = best.evaluate([dots])
     new_diff = 0
@@ -39,9 +39,9 @@ def GraientDescent(best, SAMPLE_SIZE, f = choice([1, -1])):
     if new_diff >= diff or diff-new_diff <0.00005:
         
         if e == -1:
-            node.b -= 0.1*f
+            node.b -= 0.01*f
         else:
-            node.w[e] -= 0.1*f
+            node.w[e] -= 0.01*f
         new_evaled = best.evaluate([dots])
         new_diff = 0
         
@@ -52,9 +52,9 @@ def GraientDescent(best, SAMPLE_SIZE, f = choice([1, -1])):
         print(new_diff)
         if new_diff >= diff or diff-new_diff <0.00005:
             if e == -1:
-                node.b += 0.05*f
+                node.b += 0.005*f
             else:
-                node.w[e] += 0.05*f
+                node.w[e] += 0.005*f
             print(3)
             return 0
         else:
@@ -62,9 +62,9 @@ def GraientDescent(best, SAMPLE_SIZE, f = choice([1, -1])):
     diffs = [10000000]
     while True:
         if e == -1:
-            node.b += 0.05*f
+            node.b += 0.005*f
         else:
-            node.w[e] += 0.05*f
+            node.w[e] += 0.005*f
 
         new_evaled = best.evaluate([dots])
         new_diff = 0
@@ -78,8 +78,8 @@ def GraientDescent(best, SAMPLE_SIZE, f = choice([1, -1])):
         if int(new_diff) >= int(diffs[-2]) or diffs[-2]-new_diff<0.00002:
             
             if e == -1:
-                node.b += 0.05*f
+                node.b += 0.005*f
             else:
-                node.w[e] += 0.05*f
+                node.w[e] += 0.005*f
             print(" -> ", new_diff)
             return 1
