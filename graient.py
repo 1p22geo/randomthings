@@ -33,7 +33,7 @@ def GraientDescent(best, SAMPLE_SIZE):
         new_diff += abs(new_evaled[1][n]-result_b[n])**2
     new_diff /= SAMPLE_SIZE
     print(new_diff)
-    if new_diff >= diff or diff-new_diff <0.2:
+    if new_diff >= diff:
         print(3)
         if e == -1:
             node.b -= 0.005*f
@@ -57,11 +57,9 @@ def GraientDescent(best, SAMPLE_SIZE):
             new_diff /= SAMPLE_SIZE
             diffs.append(new_diff)
             print("A ", new_diff)
-            if int(new_diff) >= int(diffs[-2]) or diffs[-2]-new_diff<0.05:
-                
-                if e == -1:
-                    node.b += 0.005*f
-                else:
-                    node.w[e] += 0.005*f
-                print(" -> ", new_diff)
-                return 1
+            if e == -1:
+                node.b += 0.005*f
+            else:
+                node.w[e] += 0.005*f
+            print(" -> ", new_diff)
+            return 1

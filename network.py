@@ -2,27 +2,22 @@ from node import Node
 import matplotlib.pyplot as plt
 import numpy as np
 import copy
-import graient
+import gradient2 as graient
 from random import randint, choice, random, sample, uniform
 
 class Network:
     def __init__(self):
         self.layers = [[]]
         self.layers[0] = [Node()]
-        self.layers.append([Node([1.0]), Node([1.0]), Node([1.0]), Node([1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]),Node([1.0, 1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0])])
-        self.layers.append([Node([1.0, 1.0, 1.0, 1.0]), Node([1.0, 1.0, 1.0, 1.0])])
+        self.layers.append([Node([uniform(2, -2)]), Node([uniform(2, -2)]), Node([uniform(2, -2)]), Node([uniform(2, -2)])])
+        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        
+        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
 
     def copy(self):
 
@@ -58,9 +53,16 @@ SAMPLE_SIZE = 500
 fig, ax = plt.subplots(2, 2)
 best = Network()
 changes = 0
-while changes < 1:
+count = 0
+changeList = [0]
+while True:
+    count +=1
     a = graient.GraientDescent(best, SAMPLE_SIZE)
-    changes += a
+    if a :
+        changeList.append(count)
+
+    if count-changeList[-1] >= 10000:
+        break
 
     """ nets = [best]
 
@@ -94,15 +96,15 @@ while changes < 1:
     best = nets[index] """
 
 dots = np.linspace(-10, 10, SAMPLE_SIZE)
-result_a = np.exp(dots)
-result_b = 2*dots**3+3*dots**2-10*dots
+result_a = -np.exp(dots)
+#result_b = 2*dots**3+3*dots**2-10*dots
 
 evaled = best.evaluate([dots])
 
 ax[0][0].plot(dots, evaled[0])
-ax[1][0].plot(dots, evaled[1])
+#ax[1][0].plot(dots, evaled[1])
 ax[0][1].plot(dots, result_a)
-ax[1][1].plot(dots, result_b)
+#ax[1][1].plot(dots, result_b)
 
 
 plt.show()
