@@ -13,7 +13,7 @@ class Node:
         for n in range(len(nodes)):
             sum += nodes[n].x * self.w[n]
         #sum -= self.b
-        #self.x = np.tanh(sum) 
+        #self.x = max(0, sum)
         self.x = 1/(1+np.exp(-sum))
 
     def manual(self, x):

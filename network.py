@@ -2,7 +2,7 @@ from node import Node
 import matplotlib.pyplot as plt
 import numpy as np
 import copy
-import gradient2 as graient
+import graient as graient
 from random import randint, choice, random, sample, uniform
 
 class Network:
@@ -10,7 +10,7 @@ class Network:
         self.layers = [[]]
         self.layers[0] = [Node()]
         self.layers.append([Node([uniform(2, -2)]), Node([uniform(2, -2)]), Node([uniform(2, -2)]), Node([uniform(2, -2)])])
-        #self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
+        self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)]), Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
         self.layers.append([Node([uniform(2, -2), uniform(2, -2), uniform(2, -2), uniform(2, -2)])])
 
     def copy(self):
@@ -49,14 +49,9 @@ best = Network()
 changes = 0
 count = 0
 changeList = [0]
-while True:
-    count +=1
-    a = graient.GraientDescent(best, SAMPLE_SIZE)
-    if a :
-        changeList.append(count)
+for epochs in range(10_000):
+    best = graient.GraientDescent(best, SAMPLE_SIZE)
 
-    if count >= 100000:
-        break
 
     """ nets = [best]
 
@@ -91,7 +86,7 @@ while True:
 
 dots = np.linspace(-10, 10, SAMPLE_SIZE)
 #result_a = -np.exp(dots)
-result_a = 3*dots**2-10*dots
+result_a = (3*dots**2-10*dots)*(0.001)
 
 evaled = best.evaluate([dots])
 
